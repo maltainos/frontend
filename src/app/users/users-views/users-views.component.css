@@ -1,0 +1,15 @@
+.container {
+    width: 90%;
+    margin: 0 auto;
+    padding: 0;
+}
+
+.menor {
+    width: 70px;
+}
+@media (max-width: 1200px) {
+    .container {
+        width: 98%;
+        margin: 0 auto;
+    }
+}

@@ -1,0 +1,60 @@
+<p-panel header="Lista de Contacto">
+    <button pButton class="mb-2" (click)="showDialogContacto()">
+        <i class="pi pi-plus"></i>&nbsp; Contacto
+    </button>
+    <p-table [value]="contactos" [paginator]="true" responsiveLayout="stack" [rows]="10"
+    [rowHover]="true" styleClass="p-datatable-sm p-datatable-gridlines">
+        <ng-template pTemplate="header" let-columns>
+            <tr>
+                <th style="width: 100px; text-align: center;">Data Engravida</th>
+                <th style="width: 100px; text-align: center;">Data Parto</th>
+                <th style="width: 55px; text-align: center;">Gravidez Status</th>
+                <th style="width: 55px; text-align: center;">Aborto</th>
+                <th style="width: 185px; text-align: center;">Local Parto</th>
+                <th style="width: 70px; text-align: center;">Data Criacao</th>
+                <th style="width: 70px; text-align: center;">Data Atualizacao</th>
+                <th style="width: 120px; text-align: center;">Opcoes</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-gravidez let-columns="columns">
+            <tr>
+                <td><span class="p-column-title">Data Engravida</span>{{ gravidez.dataEngravida }}</td>
+                <td><span class="p-column-title">Data Parto</span>{{ gravidez.dataParto }}</td>
+                <td><span class="p-column-title">Gravidez Status</span>{{ gravidez.gravidezStatus }}</td>
+                <td><span class="p-column-title">Aborto</span>{{ gravidez.aborto }}</td>
+                <td><span class="p-column-title">Local Parto</span>{{ gravidez.localParto | uppercase }}</td>
+                <td><span class="p-column-title">Data Criacao</span>{{ gravidez.dataRegistro | date : 'short'}}</td>
+                <td><span class="p-column-title">Data Atualizacao</span>{{ gravidez.dataAtualizacao | date : 'short'}} </td>
+                <td>
+                    <span class="p-column-title">Action</span>
+                    <a routerLink="/gravidez/{{ gravidez.gravidezId }}" pButton class="p-button-sm m-1" pTooltip="Edicao" tooltipPosition="top">
+                        <i class="pi pi-pencil"></i>
+                    </a>
+                    <button pButton class="p-button-sm m-1" pTooltip="Auditoria" tooltipPosition="top">
+                        <i class="pi pi-tags"></i>
+                    </button>
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+
+    <p-dialog header="Adicionar Contacto" [style]="{width: '40vw', height: '17vw'}" [(visible)]="display">
+        <form #formGravidez="ngForm" (ngSubmit)="salvar(formGravidez);">
+            <div class="p-fluid grid">
+
+                <div class="col-12 md:col-12 xl:col-12">
+                    <span class="p-float-label">
+                        <input type="text" pInputText>
+                        <label for="gravidez">Telefone</label>
+                    </span>
+                </div>
+            </div>
+
+            <div class="col-12">
+                <button type="submit" pButton label="Salvar" class="p-button-success mr-2" icon="pi pi-check"></button>
+                <button type="reset" pButton label="Limpar" class="p-button-warning" icon="pi pi-times"></button>
+            </div>
+        </form>
+    </p-dialog>
+</p-panel>
+<p-toast key="success"></p-toast>

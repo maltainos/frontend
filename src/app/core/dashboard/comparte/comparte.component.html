@@ -1,0 +1,38 @@
+<div class="grid">
+
+    <!--
+    <div class="col-12 md:col-6 lg:col-3 bg-success">
+        <div class="p-card" [ngStyle]="{backgroundColor:'var(--green-600)'}">
+            <div class="custom-card">
+                <div class="display">
+                    <div class="left">
+                        <i class="pi pi-check-circle mr-2"></i>
+                        <span>200 Response</span>
+                    </div>
+                    <div class="rigth">
+                        <span ></span>
+                    </div>
+                </div>
+
+                <div class="display mt-2">
+                    <div class="left">
+                        <span>Updated:</span>
+                    </div>
+                    <div class="rigth">
+                        <span style="font-size: 14px;"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        -->
+    <div class="col-12 md:col-8">
+        <p-panel header="Pacientes Ano passado e este ano">
+            <div class="grid">
+                <div class="col-12 d-flex align-items-center justify-content-center">
+                    <p-chart type="line" [data]="basic1Data" [options]="basicOptions"></p-chart>
+                </div>
+            </div>
+        </p-panel>
+    </div>
+</div>

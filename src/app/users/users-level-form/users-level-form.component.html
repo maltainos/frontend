@@ -1,0 +1,51 @@
+<div class="container">
+    <div class="grid">
+        <div class="col-12">
+            <p-divider type="dashed">
+              <div class="inline-flex align-items-center">
+                <i class="pi pi-clock mr-2" style="font-size: 2rem"></i>
+                <h3>Usuarios</h3>
+            </div>
+            </p-divider>
+        </div>
+    </div>
+
+    <div class="flex flex-wrap align-items-center justify-content-center">
+        <div class="col-12 md:col-9">
+            <p-card header="Formulario de Utilizadores" [style]="{'margin-top': '2em', 'margin-left': '2em'}">
+                <div class="form">
+
+                    <form autocomplete="off" #formUserLevel = "ngForm" (ngSubmit) = "salvar(formUserLevel);">
+                        <div class="p-fluid grid">
+                            <div class="col-12 md:col-12">
+                                <div class="col-12 md:col-12">
+                                    <span class="p-float-label">
+                                        <input id="float-input" type="text" pInputText name="levelName" #levelName="ngModel" ngModel required minlength="3">
+                                        <label for="float-input">Grupo de Utilizador</label>
+                                        <p-message *ngIf="levelName.hasError('required') && levelName.dirty" severity="error" text="Nome e Obrigatorio" styleClass="mt-1"></p-message>
+                                        <p-message *ngIf="levelName.hasError('minlength') && levelName.dirty" severity="error" text="Nome deve ter pelo menos 3" styleClass="mt-1"></p-message>
+                                    </span>
+                                </div>
+
+                            </div>
+
+                            <div class="col-12 md:col-4" *ngFor="let role of roles">
+                                <p-checkbox name="roleConfig" ngModel value="{{ role.roleId }}" [(ngModel)]="roleToGroup" id="role.roleId" [required]="true"></p-checkbox>
+                                <label for="role.roleId"> {{ role.roleName }}</label>
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            <button type="submit" [disabled]="!formUserLevel.valid" pButton label="Salvar" class="p-button-success mr-2" icon="pi pi-check"></button>
+                            <button type="reset" pButton label="Limpar" class="p-button-warning" icon="pi pi-times"></button>
+                            <a routerLink="/users" class="ml-2">Valtar para pesquisar</a>
+                        </div>
+                    </form>
+                </div>
+            </p-card>
+        </div>
+    </div>
+
+    <p-toast key="error"></p-toast>
+    <p-toast key="success"></p-toast>
+</div>

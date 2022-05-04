@@ -1,0 +1,78 @@
+<div class="container">
+    <div class="grid">
+        <div class="col-12">
+            <p-divider type="dashed">
+              <div class="inline-flex align-items-center">
+                <i class="pi pi-clock mr-2" style="font-size: 2rem"></i>
+                <h3>Usuarios</h3>
+            </div>
+            </p-divider>
+        </div>
+    </div>
+
+    <div class="flex flex-wrap align-items-center justify-content-center">
+        <div class="col-12 md:col-9">
+            <p-card header="{{ edit ? 'Edicao' : 'Novo' }} Usuario" [style]="{'margin-top': '2em', 'margin-left': '2em'}">
+                <div class="form">
+
+                    <form autocomplete="off" #formUser = "ngForm" (ngSubmit) = "salvar(formUser);">
+                        <div class="p-fluid grid">
+                            <div class="col-12 md:col-12">
+                                <div class="col-12 md:col-12">
+                                    <span class="p-float-label">
+                                        <input id="float-input" type="text" pInputText name="firstName" #firstName="ngModel" [(ngModel)]="user.firstName!" required minlength="3">
+                                        <label for="float-input">Primeiro Nome</label>
+                                        <p-message *ngIf="firstName.hasError('required') && firstName.dirty" severity="error" text="Nome e Obrigatorio" styleClass="mt-1"></p-message>
+                                        <p-message *ngIf="firstName.hasError('minlength') && firstName.dirty" severity="error" text="Nome deve ter pelo menos 3" styleClass="mt-1"></p-message>
+                                    </span>
+                                </div>
+
+                                <div class="col-12 md:col-12">
+                                    <span class="p-float-label">
+                                        <input id="lastname" type="text" pInputText name="lastName" #lastName="ngModel" [(ngModel)]="user.lastName!" required minlength="3">
+                                        <label for="lastName">Sobre Nome</label>
+                                        <p-message *ngIf="lastName.hasError('required') && lastName.dirty" severity="error" text="Sobrenome e Obrigatorio" styleClass="mt-1"></p-message>
+                                        <p-message *ngIf="lastName.hasError('minlength') && lastName.dirty" severity="error" text="Sobrenome deve ter pelo menos 3" styleClass="mt-1"></p-message>
+                                    </span>
+                                </div>
+
+                                <div class="col-12 md:col-12">
+                                    <span class="p-float-label">
+                                        <input id="email" type="email" pInputText name="email" [(ngModel)]="user.email" #email="ngModel" required minlength="10">
+                                        <label for="email">Email</label>
+                                        <p-message *ngIf="email.hasError('required') && email.dirty" severity="error" text="Email e Obrigatorio" styleClass="mt-1"></p-message>
+                                        <p-message *ngIf="email.hasError('minlength') && email.dirty" severity="error" text="Email Invalido" styleClass="mt-1"></p-message>
+                                    </span>
+                                </div>
+
+                                <div class="col-12 md:col-12" *ngIf="!edit">
+                                    <span class="p-float-label">
+                                        <input type="password" pInputText id="nomePai" name="password" #password="ngModel" [(ngModel)]="user.password" required minlength="8" maxlength="12">
+                                        <label for="nomePai">Password</label>
+                                        <p-message *ngIf="password.hasError('required') && password.dirty" severity="error" text="Password e Obrigatorio" styleClass="mt-1"></p-message>
+                                        <p-message *ngIf="password.hasError('minlength') && password.dirty" severity="error" text="Password Invalido" styleClass="mt-1"></p-message>
+                                    </span>
+                                </div>
+
+
+                                <div class="col-12 md:col-12" *ngIf="edit">
+                                    <p-multiSelect name="groups" [options]="userLevels" #groups="ngModel" [(ngModel)] = "selectedUserLevels" display="chip" optionLabel="levelName"></p-multiSelect>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            <button type="submit" [disabled]="!formUser.valid" pButton label="Salvar" class="p-button-success mr-2" icon="pi pi-check"></button>
+                            <button type="reset" pButton label="Limpar" class="p-button-warning" icon="pi pi-times"></button>
+                            <a routerLink="/users" class="ml-2">Valtar para pesquisar</a>
+                        </div>
+                    </form>
+                </div>
+            </p-card>
+        </div>
+    </div>
+
+    <p-toast key="error"></p-toast>
+    <p-toast key="success"></p-toast>
+</div>

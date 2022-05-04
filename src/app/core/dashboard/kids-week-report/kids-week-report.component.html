@@ -1,0 +1,25 @@
+<div class="grid">
+
+    <div class="col-12 md:col-12">
+        <p-panel header="Recem Nascido Por Semana">
+            <div class="grid">
+                <div class="col-12 md:col-6">
+                    <p-panel header="Grafico de Pizza">
+                        <div class="grid">
+                            <div class="container">
+                                <p-chart type="pie" height="290px" width="100%" [data]="kidWeekReportChart"></p-chart>
+                            </div>
+                        </div>
+                    </p-panel>
+                </div>
+
+                <div class="col-12 md:col-6">
+                    <p-panel header="Grafico de Barras">
+                        <p-chart type="bar" [data]="kidWeekReportChart" [options]="kidWeekReportOptions"></p-chart>
+                    </p-panel>
+                </div>
+            </div>
+        </p-panel>
+    </div>
+
+</div>

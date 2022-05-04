@@ -1,0 +1,28 @@
+<div class="container">
+    <div class="top-50">
+        <div class="flex flex-wrap align-items-center justify-content-center card-container purple-container h-screen">
+            {{ jwtPayLoad | json }}
+            <div class="p-card border-round bg-blue-50 w-25rem p-3 align-items-center">
+                <h2 [style]="'font-weight : 200'">Login Here</h2>
+                <form #formLogin = "ngForm" (ngSubmit)="login(formLogin)">
+                    <div class="p-field my-4">
+                        <label for="email">Email:</label>
+                        <input id="email" type="email" #email="ngModel" name="email" [(ngModel)]="userLogin.email" class="formControl w-full" pInputText>
+                    </div>
+
+                    <div class="p-field mb-4">
+                        <label for="password">Password:</label>
+                        <input type="password" name="password" id="password" [(ngModel)]="userLogin.password"  class="formControl w-full" pInputText>
+                    </div>
+                    <div class="p-field mb-4">
+                        <span class="align-items-right" [style] = "'float : right'"><a routerLink="password-reset">Forgot my Password</a></span><br>
+                        <button class="mt-2" type="submit" pButton>Login</button>
+                    </div>
+                </form>
+
+                <p-toast key="error"></p-toast>
+            </div>
+        </div>
+    </div>
+</div>
+

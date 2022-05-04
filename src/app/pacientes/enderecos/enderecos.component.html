@@ -1,0 +1,100 @@
+<p-panel header="Lista de Enderecos">
+    <button pButton class="mb-2" (click)="showDialogContacto()">
+        <i class="pi pi-plus"></i>&nbsp; Endereco
+    </button>
+    <p-table [value]="enderecos" [paginator]="true" responsiveLayout="stack" [rows]="10"
+    [rowHover]="true" styleClass="p-datatable-sm p-datatable-gridlines">
+        <ng-template pTemplate="header" let-columns>
+            <tr>
+                <th style="width: 190px; text-align: center;">Residencia</th>
+                <th style="width: 190px; text-align: center;">Districto</th>
+                <th style="width: 170px; text-align: center;">Bairro</th>
+                <th style="width: 240px; text-align: center;">Avenida</th>
+                <th style="width: 70; text-align: center;">Rua</th>
+                <th style="width: 100px; text-align: center;">Nr. Casa</th>
+                <th style="width: 130px; text-align: center;">Tel. Casa</th>
+                <th style="width: 70px; text-align: center;">Remover</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-endreco let-columns="columns">
+            <tr>
+                <td><span class="p-column-title">Residencia</span>{{ endreco.residencia }}</td>
+                <td><span class="p-column-title">Districto</span>{{ endreco.districto }}</td>
+                <td><span class="p-column-title">Bairro</span>{{ endreco.bairro }}</td>
+                <td><span class="p-column-title">Avenida</span>{{ endreco.avenida }}</td>
+                <td style="text-align: center;"><span class="p-column-title">Rua</span>{{ endreco.rua | uppercase }}</td>
+                <td style="text-align: center;"><span class="p-column-title">Nr. Casa</span>{{ endreco.nrCasa }}</td>
+                <td style="text-align: center;"><span class="p-column-title">Tel. Casa</span>{{ endreco.telefoneCasa }} </td>
+                <td style="text-align: center;">
+                    <span class="p-column-title">Remover</span>
+                    <button pButton class="p-button-sm" pTooltip="Remover" tooltipPosition="top">
+                        <i class="pi pi-trash"></i>
+                    </button>
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+
+    <p-dialog header="Adicionar Contacto" [style]="{width: '60vw'}" [(visible)]="display">
+        <form #formEndereco="ngForm" (ngSubmit)="salvar(formEndereco);">
+            <div class="p-fluid grid">
+
+                <div class="col-12 md:col-6 xl:col-6">
+                    <span class="p-float-label">
+                        <input type="text" pInputText>
+                        <label for="gravidez">Provincia</label>
+                    </span>
+                </div>
+
+                <div class="col-12 md:col-6 xl:col-6">
+                    <span class="p-float-label">
+                        <input type="text" pInputText>
+                        <label for="gravidez">Districto</label>
+                    </span>
+                </div>
+
+                <div class="col-12 md:col-6 xl:col-6">
+                    <span class="p-float-label">
+                        <input type="text" pInputText>
+                        <label for="gravidez">Bairro</label>
+                    </span>
+                </div>
+
+                <div class="col-12 md:col-6 xl:col-6">
+                    <span class="p-float-label">
+                        <input type="text" pInputText>
+                        <label for="gravidez">Avenidade</label>
+                    </span>
+                </div>
+
+                <div class="col-12 md:col-6 xl:col-6">
+                    <span class="p-float-label">
+                        <input type="text" pInputText>
+                        <label for="gravidez">Rua</label>
+                    </span>
+                </div>
+
+                <div class="col-12 md:col-6 xl:col-6">
+                    <span class="p-float-label">
+                        <input type="text" pInputText>
+                        <label for="gravidez">Numero de Casa</label>
+                    </span>
+                </div>
+
+                <div class="col-12 md:col-12 xl:col-12">
+                    <span class="p-float-label">
+                        <input type="text" pInputText>
+                        <label for="gravidez">Telefone de Casa</label>
+                    </span>
+                </div>
+
+            </div>
+
+            <div class="col-12">
+                <button type="submit" pButton label="Salvar" class="p-button-success mr-2" icon="pi pi-check"></button>
+                <button type="reset" pButton label="Limpar" class="p-button-warning" icon="pi pi-times"></button>
+            </div>
+        </form>
+    </p-dialog>
+</p-panel>
+<p-toast key="success"></p-toast>

@@ -1,0 +1,23 @@
+<p-panel header="Estatisticas Geral Barra(Endpoints)">
+    <div class="grid">
+        <div class="col-12 md:col-6">
+            <p-panel header="Grafico de Barras">
+                <div class="grid">
+                    <div class="col-12 d-flex align-items-center justify-content-center">
+                        <p-chart type="bar" [data]="basicData" [options]="basicOptions"></p-chart>
+                    </div>
+                </div>
+            </p-panel>
+        </div>
+
+        <div class="col-12 md:col-6">
+            <p-panel header="Grafico Pizza">
+                <div class="grid">
+                    <div class="container">
+                        <p-chart type="pie" height="300px" width="100%" [data]="basicData"></p-chart>
+                    </div>
+                </div>
+            </p-panel>
+        </div>
+    </div>
+</p-panel>

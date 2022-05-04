@@ -1,0 +1,66 @@
+<div class="container">
+    <div class="grid">
+        <div class="col-12 my-6">
+        </div>
+    </div>
+
+    <p-panel header="Gravidez Details">
+        <div class="form">
+            <form #formGravidez="ngForm">
+                <div class="p-fluid grid">
+                    {{ gravidez.dataEngravida }}
+                    <div class="col-12 md:col-6 xl:col-6">
+                        <span class="p-float-label">
+                            <p-calendar [showIcon]="true" dateFormat="dd-mm-yy"
+                            name="dataGravida" id="dataGravidez" #dataGravidez="ngModel"
+                            [(ngModel)]="gravidez.dataEngravida"></p-calendar>
+                            <label for="gravidez">Data Engravidou</label>
+                        </span>
+                    </div>
+
+                    <div class="col-12 md:col-6 xl:col-6">
+                        <span class="p-float-label">
+                            <p-calendar [showIcon]="true" dateFormat="dd/mm/yy" name="dataParto" id="dataParto" #dataParto="ngModel" [(ngModel)]="gravidez.dataParto"></p-calendar>
+                            <label for="nascimento">Data de Possivel Parto</label>
+                        </span>
+                    </div>
+
+                    <div class="col-12 md:col-6 xl:col-6">
+                        <p-dropdown id="gravidezStatus" [options]="gravidezStatus" name="gravidezStatus" #status="ngModel" [(ngModel)]="gravidez.gravidezStatus"></p-dropdown>
+                    </div>
+                    {{ gravidez.aborto }}
+                    <div class="col-12 md:col-6 xl:col-6">
+                        <p-dropdown id="tipoAborto" [options]="tipoAborto" name="aborto" #aborto="ngModel" [(ngModel)]="gravidez.aborto"></p-dropdown>
+                    </div>
+
+                    <div class="col-12 md:col-12 xl:col-12">
+                        <span class="p-float-label">
+                            <input type="text" pInputText id="localParto" name="locaParto" #localParto="ngModel" [(ngModel)]="gravidez.localParto">
+                            <label for="localParto">Local Parto</label>
+                        </span>
+                    </div>
+
+                    <div class="col-12 md:col-6 xl:col-6">
+                        <span class="p-float-label">
+                            <p-calendar [showIcon]="true" dateFormat="dd/mm/yy" name="dataRegistro" id="dataRegistro" #dataRegistro="ngModel" [(ngModel)]="gravidez.dataRegistro"></p-calendar>
+                            <label for="dataRegistro">Data Registro</label>
+                        </span>
+                    </div>
+
+                    <div class="col-12 md:col-6 xl:col-6">
+                        <span class="p-float-label">
+                            <p-calendar [showIcon]="true" dateFormat="dd/mm/yy" name="dataAtualizacao" id="dataAtualizacao" #dataAtualizacao="ngModel" [(ngModel)]="gravidez.dataAtualizacao"></p-calendar>
+                            <label for="dataAtualizacao">Data Atualizacao</label>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="col-12">
+                    <button type="submit" pButton label="Salvar" class="p-button-success mr-2" icon="pi pi-check"></button>
+                    <button type="reset" pButton label="Limpar" class="p-button-warning" icon="pi pi-times"></button>
+                    <a routerLink="/pacientes/{{ gravidez.pacienteId }}" pButton class="mx-2">Valtar</a>
+                </div>
+            </form>
+        </div>
+    </p-panel>
+</div>

@@ -1,0 +1,313 @@
+<div class="grid">
+    <div class="col-12 md:col-6 lg:col-3 bg-success">
+        <div class="p-card" [ngStyle]="{backgroundColor:'var(--green-600)'}">
+            <div class="custom-card">
+                <div class="display">
+                    <div class="left">
+                        <i class="pi pi-check-circle mr-2"></i>
+                        <span>200 Response</span>
+                    </div>
+                    <div class="rigth">
+                        <span >{{ http200Traces?.length }}</span>
+                    </div>
+                </div>
+
+                <div class="display mt-2">
+                    <div class="left">
+                        <span>Updated:</span>
+                    </div>
+                    <div class="rigth">
+                        <span style="font-size: 14px;">{{ http200Traces[0]?.timestamp | date : 'short' }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="col-12 md:col-6 lg:col-3 bg-danger">
+        <div class="p-card" [ngStyle]="{backgroundColor:'#2d5dbd'}">
+            <div class="custom-card">
+                <div class="title">
+                    <div class="display">
+                        <div class="left">
+                            <i class="pi pi-times-circle mr-2"></i>
+                            <span>201 Response</span>
+                        </div>
+                        <div class="rigth">
+                            <span >{{ http201Traces?.length }}</span>
+                        </div>
+                    </div>
+
+                    <div class="display mt-2">
+                        <div class="left">
+                            <span>Updated:</span>
+                        </div>
+                        <div class="rigth">
+                            <span style="font-size: 14px;">{{ http201Traces[0]?.timestamp | date : 'short'}}</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="col-12 md:col-6 lg:col-3 bg-danger">
+        <div class="p-card" [ngStyle]="{backgroundColor:'#42A5F5'}">
+            <div class="custom-card">
+                <div class="title">
+                    <div class="display">
+                        <div class="left">
+                            <i class="pi pi-times-circle mr-2"></i>
+                            <span>202 Response</span>
+                        </div>
+                        <div class="rigth">
+                            <span >{{ http202Traces?.length }}</span>
+                        </div>
+                    </div>
+
+                    <div class="display mt-2">
+                        <div class="left">
+                            <span>Updated:</span>
+                        </div>
+                        <div class="rigth">
+                            <span style="font-size: 14px;">{{ http202Traces[0]?.timestamp | date : 'short'}}</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="col-12 md:col-6 lg:col-3 bg-danger">
+        <div class="p-card" [ngStyle]="{backgroundColor:'#0ee8e1'}">
+            <div class="custom-card">
+                <div class="title">
+                    <div class="display">
+                        <div class="left">
+                            <i class="pi pi-times-circle mr-2"></i>
+                            <span>204 Response</span>
+                        </div>
+                        <div class="rigth">
+                            <span >{{ http204Traces?.length }}</span>
+                        </div>
+                    </div>
+
+                    <div class="display mt-2">
+                        <div class="left">
+                            <span>Updated:</span>
+                        </div>
+                        <div class="rigth">
+                            <span style="font-size: 14px;">{{ http204Traces[0]?.timestamp | date : 'short'}}</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="col-12 md:col-6 lg:col-3">
+        <div class="p-card" [ngStyle]="{backgroundColor:'#e35c0e'}">
+            <div class="custom-card">
+                <div class="title">
+                    <div class="display">
+                        <div class="left">
+                            <i class="pi pi-ban mr-2"></i>
+                            <span>400 Response</span>
+                        </div>
+                        <div class="rigth">
+                            <span >{{ http400Traces?.length }}</span>
+                        </div>
+                    </div>
+
+                    <div class="display mt-2">
+                        <div class="left">
+                            <span>Updated:</span>
+                        </div>
+                        <div class="rigth">
+                            <span style="font-size: 14px;">{{ http400Traces[0]?.timestamp | date : 'short'}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-12 md:col-6 lg:col-3">
+        <div class="p-card" [ngStyle]="{backgroundColor:'var(--orange-400)'}">
+            <div class="custom-card">
+                <div class="title">
+                    <div class="display">
+                        <div class="left">
+                            <i class="pi pi-exclamation-circle mr-2"></i>
+                            <span>404 Response</span>
+                        </div>
+                        <div class="rigth">
+                            <span>{{ http404Traces?.length }}</span>
+                        </div>
+                    </div>
+
+                    <div class="display mt-2">
+                        <div class="left">
+                            <span>Updated:</span>
+                        </div>
+                        <div class="rigth">
+                            <span style="font-size: 14px;">{{ http404Traces[0]?.timestamp | date : 'short'}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-12 md:col-6 lg:col-3 bg-danger">
+        <div class="p-card" [ngStyle]="{backgroundColor:'#e8da0e'}">
+            <div class="custom-card">
+                <div class="title">
+                    <div class="display">
+                        <div class="left">
+                            <i class="pi pi-times-circle mr-2"></i>
+                            <span>406 Response</span>
+                        </div>
+                        <div class="rigth">
+                            <span >{{ http406Traces?.length }}</span>
+                        </div>
+                    </div>
+
+                    <div class="display mt-2">
+                        <div class="left">
+                            <span>Updated:</span>
+                        </div>
+                        <div class="rigth">
+                            <span style="font-size: 14px;">{{ http406Traces[0]?.timestamp | date : 'short'}}</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="col-12 md:col-6 lg:col-3 bg-danger">
+        <div class="p-card" [ngStyle]="{backgroundColor:'#f01405'}">
+            <div class="custom-card">
+                <div class="title">
+                    <div class="display">
+                        <div class="left">
+                            <i class="pi pi-times-circle mr-2"></i>
+                            <span>500 Response</span>
+                        </div>
+                        <div class="rigth">
+                            <span >{{ http500Traces?.length }}</span>
+                        </div>
+                    </div>
+
+                    <div class="display mt-2">
+                        <div class="left">
+                            <span>Updated:</span>
+                        </div>
+                        <div class="rigth">
+                            <span style="font-size: 14px;">{{ http500Traces[0]?.timestamp | date : 'short'}}</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="col-12">
+        <p-panel header="Grafico HTTP Traces">
+            <div class="grid">
+                <div class="col-12 md:col-8 xl:col-6">
+                    <p-panel header="Grafico de Barras">
+                        <div class="grid">
+                            <div class="col-12 d-flex align-items-center justify-content-center">
+                                <p-chart type="bar" [data]="basicData" [options]="basicOptions"></p-chart>
+                            </div>
+                        </div>
+                    </p-panel>
+                </div>
+
+                <div class="col-12 md:col-6">
+                    <p-panel header="Grafico de Pizza">
+                        <div class="grid">
+                            <div class="container">
+                                <p-chart type="pie" height="300px" width="100%" [data]="basicData"></p-chart>
+                            </div>
+                        </div>
+                    </p-panel>
+                </div>
+            </div>
+        </p-panel>
+    </div>
+
+    <p-panel class="col-12" header="HTTP Traces">
+        <p-table [value]="traceList" responsiveLayout="stack" styleClass="p-datatable-sm p-datatable-gridlines"
+        [paginator]="true" [rowHover]="true" [rows]="10">
+            <ng-template pTemplate="header" let-columns>
+                <tr>
+                    <th style="width: 180px;" [style.textAlign]="'center'">Timestamp</th>
+                    <th style="width: 60px;" [style.textAlign]="'center'">Method</th>
+                    <th style="width: 95px;" [style.textAlign]="'center'">Time Taken(ms)</th>
+                    <th style="width: 60px;" [style.textAlign]="'center'">Status</th>
+                    <th style="width: 390px;" [style.textAlign]="'center'">URL</th>
+                    <th style="width: 60px;" [style.textAlign]="'center'">View</th>
+                </tr>
+            </ng-template>
+
+            <ng-template pTemplate="body" let-trace let-columns="columns">
+                <tr>
+                    <td [style.textAlign]="'center'"><span class="p-column-title">Timestamp</span>{{ trace.timestamp | date : 'medium'}}</td>
+                    <td [style.textAlign]="'center'"><span class="p-column-title">Method</span> {{ trace.request.method | uppercase }}</td>
+                    <td [style.textAlign]="'center'"><span class="p-column-title">Time Taken(ms)</span> {{ trace.timeTaken }}</td>
+                    <td [ngSwitch]="trace.response.status" [style.textAlign]="'center'">
+                        <span class="p-column-title">Status</span>
+                        <p-badge *ngSwitchCase="'200'" severity="success"  severity="success" [value]="trace.response.status"></p-badge>
+                        <p-badge *ngSwitchCase="'201'" severity="primary"  severity="primary" [value]="trace.response.status"></p-badge>
+                        <p-badge *ngSwitchCase="'202'" severity="info"  severity="info" [value]="trace.response.status"></p-badge>
+                        <p-badge *ngSwitchCase="'204'" severity="primary"  severity="primary" [value]="trace.response.status"></p-badge>
+                        <p-badge *ngSwitchCase="'400'" severity="secondary"  severity="secondary" [value]="trace.response.status"></p-badge>
+                        <p-badge *ngSwitchCase="'404'" severity="warning"  severity="warning" [value]="trace.response.status"></p-badge>
+                        <p-badge *ngSwitchCase="'406'" severity="danger"  severity="primary" [value]="trace.response.status"></p-badge>
+                        <p-badge *ngSwitchCase="'500'" severity="danger"  severity="danger" [value]="trace.response.status"></p-badge>
+                    </td>
+                    <td [style.textAlign]="'center'"><span class="p-column-title">URL</span>{{ trace.request.uri }}</td>
+                    <td [style.textAlign]="'center'"><span class="p-column-title">View</span>
+                        <button pTooltip="Detalhes" (click)="showDialog(trace)" tooltipPosition="Top" pButton class="p-button-sm"><i class="pi pi-eye"></i></button>
+                        <p-dialog header="Http Trace Details" [(visible)]="display">
+                            <p-tabView>
+                                <p-tabPanel>
+                                    <ng-template pTemplate="header">
+                                        Request
+                                    </ng-template>
+
+                                    <ng-template pTemplate="body">
+                                        {{ trace | json }}
+                                    </ng-template>
+                                </p-tabPanel>
+                                <p-tabPanel>
+                                    <ng-template pTemplate="header">
+                                        Response
+                                    </ng-template>
+
+                                    <ng-template pTemplate="body">
+                                        {{ trace | json }}
+                                    </ng-template>
+                                </p-tabPanel>
+                            </p-tabView>
+                        </p-dialog>
+                    </td>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="emptymessage">
+                <tr><td colspan="8">HTTP Traces nao encontrados!</td></tr>
+            </ng-template>
+        </p-table>
+    </p-panel>
+</div>

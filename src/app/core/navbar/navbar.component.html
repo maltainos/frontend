@@ -1,0 +1,123 @@
+<nav class="navbar">
+    <div class="container">
+        <div class="grid">
+            <div class="col-12">
+                <div class="row">
+                    <div class="navbar-brand">
+                        <div class="m-grid">
+                            <button class="navbar-toggle" (click)="showMenu()">
+                                <i class="pi pi-bars"></i>
+                            </button>
+                            <h3 class="navbar-location">Dashboard</h3>
+                        </div>
+                    </div>
+                    <div class="application" style="display: flex;">
+
+                        <span *ngIf="systemHealth?.status !== 'UP'"  [style]="{color : 'red'}"><i class="pi pi-server"></i> System: DOWN</span> &nbsp;&nbsp;
+                        <span *ngIf="systemHealth?.status === 'UP'"  [style]="{color : 'green'}"><i class="pi pi-server"></i> System: {{ systemHealth?.status }}</span>
+                        &nbsp;&nbsp;
+                        <span *ngIf="systemHealth?.components.db.status !== 'UP'" [style]="{color : 'red'}">
+                            <i class="pi pi-database"></i>&nbsp;DB: DOWN
+                        </span>
+
+                        <span  *ngIf="systemHealth?.components.db.status === 'UP'" [style]="{color : 'green'}">
+                            <i class="pi pi-database"></i>
+                            DB: {{ systemHealth?.components.db.details.database }}
+                             - {{ systemHealth?.components.db.status }}
+                        </span>&nbsp;&nbsp;
+
+                        <span><i class="pi pi-drive"></i>
+                            Disk Space: {{ systemHealth?.components.diskSpace.details.free }}
+                        </span>&nbsp;&nbsp;
+                        <span> <i class="pi pi-processor"></i>
+                            Processors: {{ systemCpu?.measurements[0].value }}
+                        </span>&nbsp;&nbsp;
+
+                        <span><i class="pi pi-clock"></i> Time Up: {{ processUpTime }}</span>
+                    </div>
+                    <div class="navbar-username">
+                        <p-chip label="{{ payLoad.firstName }} {{ payLoad.lastName}}" icon="pi pi-user"></p-chip>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <ul class="navbar-menu" [hidden]="!exibindoNavbar">
+        <li class="navbar-user">
+            <span>{{ payLoad.firstName }} {{ payLoad.lastName}}</span>
+        </li>
+        <li class="navbar-menuitem">
+            <a routerLink="/home">
+                <i class="pi pi-clock"></i>&nbsp;
+                Dashboard
+            </a>
+        </li>
+        <li class="navbar-menuitem">
+            <a routerLink="/users-level">
+                <i class="pi pi-users"></i>&nbsp;
+                Grupo Usuarios
+            </a>
+        </li>
+        <li class="navbar-menuitem">
+            <a routerLink="/users">
+                <i class="pi pi-user"></i>&nbsp;Usuarios
+            </a>
+        </li>
+        <li class="navbar-menuitem">
+            <a routerLink="/pacientes">
+                <i class="pi pi-users"></i>&nbsp;Pacientes
+            </a>
+        </li>
+        <li class="navbar-menuitem">
+            <a routerLink="/gravidezes">
+                <i class="pi pi-users"></i>&nbsp;Gravidez
+            </a>
+        </li>
+        <li class="navbar-menuitem">
+            <a routerLink="/consultas-cpn">
+                <i class="pi pi-users"></i>&nbsp;Consultas PN
+            </a>
+        </li>
+        <li class="navbar-menuitem">
+            <a routerLink="/partos">
+                <i class="pi pi-users"></i>&nbsp;Gestao de Parto
+            </a>
+        </li>
+        <li class="navbar-menuitem">
+            <a routerLink="/consultas-cpp">
+                <i class="pi pi-users"></i>&nbsp;Consultas PP
+            </a>
+        </li>
+        <li class="navbar-menuitem">
+            <a routerLink="/recem-nascido">
+                <i class="pi pi-users"></i>&nbsp;Recem Nascidos
+            </a>
+        </li>
+        <li class="navbar-menuitem">
+            <a routerLink="/consultas-cpp">
+                <i class="pi pi-users"></i>&nbsp;Historia Medica
+            </a>
+        </li>
+        <li class="navbar-menuitem">
+            <a routerLink="/consultas-cpp">
+                <i class="pi pi-users"></i>&nbsp;Relatorios
+            </a>
+        </li>
+        <li class="navbar-menuitem">
+            <a routerLink="/consultas-cpp">
+                <i class="pi pi-users"></i>&nbsp;HTTP Traces
+            </a>
+        </li>
+        <li class="navbar-menuitem">
+            <a routerLink="/consultas-cpp">
+                <i class="pi pi-users"></i>&nbsp;Minha Conta
+            </a>
+        </li>
+        <li class="navbar-menuitem">
+            <a routerLink="/logout" (click)="logOut()">
+                <i class="pi pi-block"></i>&nbsp;LogOut
+            </a>
+        </li>
+    </ul>
+</nav>

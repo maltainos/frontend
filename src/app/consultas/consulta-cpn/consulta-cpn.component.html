@@ -1,0 +1,79 @@
+
+    <div class="container">
+        <!-- start grid-->
+        <div class="grid">
+            <div class="col-12 my-6">
+
+            </div>
+        </div><!--/finish grid-->
+
+        <form #formFilter="ngForm" (ngSubmit)="pesquisar(formFilter)">
+            <!--start p-fluid grid formgrid-->
+            <div class="p-fluid grid formgrid">
+                <div class="field col-12 md:col-6">
+                    <p-calendar [showIcon]="true" inputId="icon" placeholder="A partir de :" name="apartirDe"></p-calendar>
+                </div>
+                <div class="field col-12 md:col-5">
+                    <p-calendar [showIcon]="true" inputId="icon" placeholder="Ate: " name="ate"></p-calendar>
+                </div>
+                <div>
+                    <button type="submit" pButton>Buscar</button>
+                </div>
+            </div><!--/finish p-fluid grid formgrid-->
+        </form>
+
+        <!--start mb-2-->
+        <div class="mb-2">
+            <p-menubar [model]="items">
+                <ng-template pTemplate="start">
+                    <img src="../../../assets/Eu-Sou.jpg" height="40" class="mr-2">
+                </ng-template>
+            </p-menubar>
+        </div><!--/finish mb-2-->
+
+        <!--start cacrd-->
+        <div class="card">
+            <p-table [value]="consultasCPN" sortMode="single"  [rowsPerPageOptions]="[10,25,50]"
+    responsiveLayout="stack" [rows]="8" rowGroupMode="subheader" [rowHover]="true"
+    styleClass="p-datatable-sm p-datatable-gridlines" [paginator]="true">
+    <ng-template pTemplate="header" let-columns>
+        <tr>
+            <th style="width: 50px; text-align: center;">Codigo PVT</th>
+            <th style="width: 60px; text-align: center;">Data Consulta</th>
+            <th style="width: 90px; text-align: center;">Data Provavel Parto</th>
+            <th style="width: 60px; text-align: center;">Peso da Mae</th>
+            <th style="width: 260px; text-align: center;">Observacoes</th>
+            <th style="width: 50px; text-align: center;">Ver Gravidez</th>
+            <th style="width: 50px; text-align: center;">Opcoes</th>
+        </tr>
+    </ng-template>
+
+    <ng-template pTemplate="body"  let-cpn let-columns="columns">
+        <tr>
+            <td style="text-align: center;">{{ cpn.codigoPvt }}</td>
+            <td style="text-align: center;">{{ cpn.dataConsulta | date : 'dd/MM/yy hh:MM:ss'}}</td>
+            <td style="text-align: center;">{{ cpn.dataProvavelDeParto }}</td>
+            <td style="text-align: center;">{{ cpn.pesoMae }} Kg</td>
+            <td>{{ cpn.observacoes }}</td>
+            <td style="text-align: center;">
+                <a routerLink="/gravidez/{{ cpn.gravidezId }}" pTooltip="Ver Gravidez" pButton class="p-button-sm">
+                    <i class="pi pi-eye"></i>
+                </a>
+            </td>
+            <td style="text-align: center;">
+                <a routerLink="" pTooltip="Detalhes" pButton class="p-button-sm">
+                    <i class="pi pi-pencil"></i>
+                </a>
+            </td>
+        </tr>
+    </ng-template>
+
+    <ng-template pTemplate="emptymessage">
+        <tr><td colspan="8">No customers found.</td></tr>
+    </ng-template>
+</p-table>
+
+        </div><!--/finish cacrd-->
+
+    </div>
+

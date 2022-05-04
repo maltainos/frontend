@@ -1,0 +1,50 @@
+/* You can add global styles to this file, and also import other style files */
+
+* {
+    padding: 0;
+    margin: 0;
+}
+body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif Tahoma,
+        sans-serif;
+    color: #404c51;
+    background-color: #f1f5f9;
+}
+
+.container {
+    width: 95%;
+    margin: 0 auto;
+    padding: 0;
+}
+
+@media (max-width: 1200px) {
+    .container {
+        width: 98%;
+        margin: 0 auto;
+    }
+}
+
+button {
+    text-align: center;
+}
+
+a {
+    text-decoration: none;
+    color: #261acf;
+    margin-left: 20px;
+}
+
+a:hover {
+    color: #1c457a;
+    cursor: pointer;
+}
+
+.p-sidebar .p-sidebar-header {
+    background-image: url("assets/Eu-Sou.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 95px;
+    /*padding: 2.2rem 0.1rem;*/
+    border-bottom: 1px solid #ccc;
+    content: "SIGCSMI";
+}

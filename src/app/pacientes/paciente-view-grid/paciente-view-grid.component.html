@@ -1,0 +1,55 @@
+<p-table [value]="pacientes" responsiveLayout="stack"  [paginator]="true" [rows]="10"
+    [rowHover]="true"  styleClass="p-datatable-sm p-datatable-gridlines">
+    <ng-template pTemplate="header" let-columns>
+        <tr>
+            <th style="width: 180px; text-align: center;">Nome</th>
+            <th style="width: 100px; text-align: center;">Apelido</th>
+            <th style="width: 55px; text-align: center;">Data Nascimento</th>
+            <th style="width: 55px; text-align: center;">Estado Civil</th>
+            <th style="width: 55px; text-align: center;">Grupo Sangue</th>
+            <th style="width: 70px; text-align: center;">Data Criacao</th>
+            <th style="width: 70px; text-align: center;">Data Ultima Atualizacao</th>
+            <th style="width: 170px; text-align: center;">Opcoes</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body"  let-paciente let-columns="columns">
+        <tr>
+            <td><span class="p-column-title">Nome</span>{{ paciente.primeiroNome }}</td>
+            <td><span class="p-column-title">Apelido</span>{{ paciente.sobreNome }}</td>
+            <td style="text-align: center;"><span class="p-column-title">Data Nascimento</span>{{ paciente.dataNascimento | date : 'dd/MM/y' }}</td>
+            <td style="text-align: center;"><span class="p-column-title">Estado Civil</span>{{ paciente.estadoCivil | uppercase}}</td>
+            <td style="text-align: center;"><span class="p-column-title">Grupo Sanguineo</span>{{ paciente.grupoSanguineo }}</td>
+            <td style="text-align: center;"><span class="p-column-title">Create On</span>{{ paciente.criadoEm | date : 'dd/MM/y' }}</td>
+            <td style="text-align: center;"><span class="p-column-title">Update On</span> {{ paciente.atualizadoEm | date : 'dd/MM/y' }} </td>
+            <td style="text-align: center;">
+                <span class="p-column-title">Action</span>
+                <a routerLink="/pacientes/{{ paciente.pacienteId }}" pButton class="p-button-sm m-1" pTooltip="Edicao" tooltipPosition="top">
+                    <i class="pi pi-pencil"></i>
+                </a>
+                <button pButton class="p-button-sm m-1" pTooltip="Remover" tooltipPosition="top">
+                    <i class="pi pi-trash"></i>
+                </button>
+
+                <button pButton class="p-button-sm m-1" pTooltip="Fazer Consulta" tooltipPosition="top">
+                    <i class="pi pi-tags"></i>
+                </button>
+
+                <a pButton routerLink="/pacientes/{{paciente.pacienteId}}/gravidez" class="p-button-sm m-1" pTooltip="Auditoria" tooltipPosition="top">
+                    <i class="pi pi-check"></i>
+                </a>
+
+                <a pButton routerLink="/pacientes/{{paciente.pacienteId}}/gravidez" class="p-button-sm m-1" pTooltip="Auditoria" tooltipPosition="top">
+                    <i class="pi pi-check"></i>
+                </a>
+
+                <a pButton routerLink="/pacientes/{{paciente.pacienteId}}/historial-clinica" class="p-button-sm m-1" pTooltip="Historial Clinica" tooltipPosition="top">
+                    <i class="pi pi-check"></i>
+                </a>
+            </td>
+        </tr>
+    </ng-template>
+
+    <ng-template pTemplate="emptymessage">
+        <tr><td colspan="8">No customers found.</td></tr>
+    </ng-template>
+</p-table>

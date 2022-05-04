@@ -1,0 +1,23 @@
+<p-panel header="Comparacao Recem Nascidos nos ultimos 2 anos">
+    <div class="grid">
+        <div class="col-12 md:col-6">
+            <p-panel header="Comparacao com grafico de linha">
+                <div class="grid">
+                    <div class="container">
+                        <p-chart type="line" [data]="basicData" [options]="basicOptions"></p-chart>
+                    </div>
+                </div>
+            </p-panel>
+        </div>
+
+        <div class="col-12 md:col-6">
+            <p-panel header="Comparacao com grafico de barras">
+                <div class="grid">
+                    <div class="container">
+                        <p-chart type="bar" [data]="basicData" [options]="basicOptions"></p-chart>
+                    </div>
+                </div>
+            </p-panel>
+        </div>
+    </div>
+</p-panel>

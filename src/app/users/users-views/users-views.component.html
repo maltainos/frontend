@@ -1,0 +1,114 @@
+
+    <div class="container">
+        <div class="grid">
+            <div class="col-12">
+                <p-divider type="dashed">
+                  <div class="inline-flex align-items-center">
+                    <i class="pi pi-clock mr-2" style="font-size: 2rem"></i>
+                    <h3>Usuarios</h3>
+                </div>
+                </p-divider>
+            </div>
+        </div>
+
+        <form autocomplete="off" (ngSubmit)="listar()">
+            <div class="p-fluid grid formgrid">
+                <div class="field col-12 md:col-5 sm:col-12">
+                    <input type="text" name="userName" [(ngModel)] = "userName" class="w-full" pInputText placeholder="Pesquisar...">
+                </div>
+                <div class="field col-12 md:col-3 sm:col-6">
+                    <p-calendar name="start" [(ngModel)] = "start" dateFormat="dd/mm/y" [showIcon]="true" inputId="icon" placeholder="De: dd/mm/yyyy"></p-calendar>
+                </div>
+                <div class="field col-12 md:col-3 sm:col-6">
+                    <p-calendar name="stop" [(ngModel)] = "stop" dateFormat="dd/mm/y" [showIcon]="true" inputId="icon" placeholder="Ate: dd/mm/yyyy"></p-calendar>
+                </div>
+                <div class="rigth">
+                    <label for=""></label>
+                    <button pButton >Buscar</button>
+                </div>
+            </div>
+        </form>
+
+        <div class="mb-2">
+            <p-menubar [model]="items">
+                <ng-template pTemplate="start">
+                    <img src="../../../assets/undraw_medicine_b1ol.png" height="40" class="mr-2">
+                </ng-template>
+            </p-menubar>
+        </div>
+
+        <p-table [value]="users" responsiveLayout="stack" [rows]="8" [paginator]="true"
+            [rowHover]="true" styleClass="p-datatable-sm p-datatable-gridlines">
+            <ng-template pTemplate="header" let-columns>
+                <tr>
+                    <th style="width: 180px; text-align: center;">Nome</th>
+                    <th style="width: 120px; text-align: center;">Apelido</th>
+                    <th style="width: 195px; text-align: center;">Email</th>
+                    <th style="width: 60px; text-align: center;">Ativo</th>
+                    <th style="width: 90px; text-align: center;">Criado Em</th>
+                    <th style="width: 90px; text-align: center;">Atualizado Em</th>
+                    <th style="width: 165px; text-align: center;">Opcoes</th>
+                </tr>
+            </ng-template>
+
+            <ng-template pTemplate="body"  let-user let-columns="columns">
+                <tr>
+                    <td><span class="p-column-title">Nome</span>{{ user.firstName }}</td>
+                    <td><span class="p-column-title">Apelido</span>{{ user.lastName }}</td>
+                    <td><span class="p-column-title">Email</span>{{ user.email }}</td>
+                    <td *ngIf="user.status" style="color :green; text-align: center;"><span class="p-column-title">Status</span>
+                        <i class="pi pi-check-circle"  style="font-size: 2rem"></i>
+                    </td>
+                    <td *ngIf="!user.status" style="text-align: center;"><span class="p-column-title">Status</span>
+                        <i class="pi pi-times-circle"  style="font-size: 2rem"></i>
+                    </td>
+                    <td style="text-align: center;"><span class="p-column-title">Create On</span>{{ user.createdOn | date : 'EEEE, dd/MM/yy' }}</td>
+                    <td *ngIf="user.updatedOn !== null" style="text-align: center;"><span class="p-column-title">Update On</span>{{ user.updatedOn | date : 'EEEE, dd/MM/yy' }}</td>
+                    <td *ngIf="user.updatedOn === null" style=" text-align: center;"><span class="p-column-title">Update On</span></td>
+                    <td style="text-align: center;">
+                            <span class="p-column-title">Action</span>
+                        <a routerLink="/users/{{ user.userId }}" pButton class="p-button-sm m-1" pTooltip="Edicao" tooltipPosition="top">
+                            <i class="pi pi-pencil"></i>
+                        </a>
+                        <button pButton class="p-button-sm m-1 bg-danger" (click)="excluir(user)" pTooltip="Remover" tooltipPosition="top">
+                            <i class="pi pi-trash"></i>
+                        </button>
+
+                        <button pButton class="p-button-sm m-1" pTooltip="Auditoria" tooltipPosition="top">
+                            <i class="pi pi-tags"></i>
+                        </button>
+                    </td>
+                </tr>
+            </ng-template>
+
+            <ng-template pTemplate="emptymessage">
+                <tr><td colspan="8">Nenhum usuario econtrado!</td></tr>
+            </ng-template>
+        </p-table>
+
+
+        <!--DELETE TOAST-->
+        <p-toast position="center" key="confirm" (onClose)="onReject()" [baseZIndex]="5000">
+            <ng-template let-message pTemplate="message">
+                <div class="flex flex-column" style="flex: 1">
+                    <div class="text-center">
+                        <i class="pi pi-exclamation-triangle" style="font-size: 3rem"></i>
+                        <h4>{{ message.summary }}</h4>
+                        <p>{{ message.detail }}</p>
+                    </div>
+                    <div class="grid p-fluid">
+                        <div class="col-6">
+                            <button type="button" pButton (click)="onConfirm()" label="SIM" class="p-button-success"></button>
+                        </div>
+                        <div class="col-6">
+                            <button type="button" pButton (click)="onReject()" label="Nao" class="p-button-secondary"></button>
+                        </div>
+                    </div>
+                </div>
+            </ng-template>
+        </p-toast>
+        <!-- DELETE TOAST-->
+        <p-toast key="success"></p-toast>
+        <p-toast key="error"></p-toast>
+    </div>
+

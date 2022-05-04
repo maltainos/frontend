@@ -1,0 +1,43 @@
+<p-table [value]="users" sortMode="single"  [rowsPerPageOptions]="[10,25,50]"
+    currentPageReportTemplate="Mostrando {{ page }} to {{ total }}"
+    responsiveLayout="stack" [rows]="8" rowGroupMode="subheader" [rowHover]="true"
+    styleClass="p-datatable-sm" [paginator]="true">
+    <ng-template pTemplate="header" let-columns>
+        <tr>
+            <th style="width: 180px;">Nome</th>
+            <th style="width: 120px;">Apelido</th>
+            <th style="width: 195px;">Email</th>
+            <th style="width: 60px;">Status</th>
+            <th style="width: 90px;">Create On</th>
+            <th style="width: 90px;">Create On</th>
+            <th style="width: 165px;">Action</th>
+        </tr>
+    </ng-template>
+
+    <ng-template pTemplate="body"  let-user let-columns="columns">
+        <tr>
+            <td><span class="p-column-title">Nome</span>{{ user.firstName }}</td>
+            <td><span class="p-column-title">Apelido</span>{{ user.lastName }}</td>
+            <td><span class="p-column-title">Email</span>{{ user.email }}</td>
+            <td><span class="p-column-title">Status</span>{{ user.status }}</td>
+            <td><span class="p-column-title">Create On</span>{{ user.createdOn | date }}</td>
+            <td><span class="p-column-title">Update On</span>{{ user.updatedOn }} </td>
+            <td>
+                <span class="p-column-title">Action</span>
+                <a routerLink="./change/{{ user.userId }}" pButton class="p-button-sm m-1" pTooltip="Edicao" tooltipPosition="top">
+                    <i class="pi pi-pencil"></i>
+                </a>
+                <button pButton class="p-button-sm m-1" pTooltip="Remover" tooltipPosition="top">
+                    <i class="pi pi-trash"></i>
+                </button>
+                <button pButton class="p-button-sm m-1" pTooltip="Auditoria" tooltipPosition="top">
+                    <i class="pi pi-tags"></i>
+                </button>
+            </td>
+        </tr>
+    </ng-template>
+
+    <ng-template pTemplate="emptymessage">
+        <tr><td colspan="8">No customers found.</td></tr>
+    </ng-template>
+</p-table>

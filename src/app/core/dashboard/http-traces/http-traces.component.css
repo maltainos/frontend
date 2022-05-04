@@ -1,0 +1,21 @@
+.custom-card {
+    display: block;
+    margin: 0;
+    height: 110px;
+    padding: 20px;
+    color: #fff;
+}
+
+.title {
+    width: 100%;
+}
+
+.display {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.rigth {
+    text-align: right;
+    font-size: 1.8rem;
+}

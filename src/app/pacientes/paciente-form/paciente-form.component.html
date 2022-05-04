@@ -1,0 +1,119 @@
+<div class="container">
+    <div class="grid">
+        <div class="col-12 my-6">
+        </div>
+    </div>
+
+    <p-panel header="{{ isEdit ? 'Edicao' : 'Cadastro' }} de Pacientes">
+        <div class="form">
+            <form #formPaciente="ngForm" (ngSubmit)="salvar(formPaciente);">
+                <div class="p-fluid grid">
+
+                    <div class="col-12">
+                        <p-divider><b>Informacoes Pessoais</b></p-divider>
+                    </div>
+
+                    <div class="col-12 md:col-6 xl:col-6">
+                        <span class="p-float-label">
+                            <input id="float-input" type="text" pInputText name="primeiroNome" #primeiroNome="ngModel" [(ngModel)]="pacienteRequest.primeiroNome">
+                            <label for="float-input">Primeiro Nome</label>
+                        </span>
+                    </div>
+
+                    <div class="col-12 md:col-6 xl:col-6">
+                        <span class="p-float-label">
+                            <input id="primerioNome" type="text" name="sobreNome" #sobreNome="ngModel" [(ngModel)]="pacienteRequest.sobreNome" pInputText>
+                            <label for="primerioNome">Sobre Nome</label>
+                        </span>
+                    </div>
+                    <div class="col-12 md:col-6 xl:col-6">
+                        <span class="p-float-label">
+                            <p-calendar [showIcon]="true" dateFormat="dd/mm/yy" name="dataNascimento" id="nascimento" #dataNascimento="ngModel" [(ngModel)]="pacienteRequest.dataNascimento"></p-calendar>
+                            <label for="nascimento">Data de Nascimento</label>
+                        </span>
+                    </div>
+
+                    <div class="col-12 md:col-6 xl:col-6">
+                        <span class="p-float-label">
+                            <p-inputNumber id="idade" [showButtons]="true" inputId="integeronly" name="anoIdade" #anosIdade="ngModel" [(ngModel)]="pacienteRequest.anosIdade" [maxlength]="2" [min]="10" [max]="100">
+                            </p-inputNumber>
+                            <label for="idade">Anos de Idade</label>
+                        </span>
+                    </div>
+
+                    <div class="col-12 md:col-6 xl:col-6">
+                        <p-dropdown id="sangue" [options]="grupoSanguineo" name="grupoSanguineo" #sangue="ngModel" [(ngModel)]="pacienteRequest.grupoSanguineo"></p-dropdown>
+                    </div>
+
+                    <div class="col-12 md:col-6 xl:col-6">
+                        <p-dropdown id="civil" [options]="estadoCivil" name="estadoCivil" #civil="ngModel" [(ngModel)]="pacienteRequest.estadoCivil"></p-dropdown>
+                    </div>
+
+                    <div class="col-12">
+                        <p-divider><b>Filiacao</b></p-divider>
+                    </div>
+
+                    <div class="col-12 md:col-6 xl:col-6">
+                        <span class="p-float-label">
+                            <input type="text" pInputText id="nomePai" name="nomePai" #nomePai="ngModel" [(ngModel)]="filiacao.nomePai">
+                            <label for="nomePai">Nome do pai</label>
+                        </span>
+                    </div>
+
+                    <div class="col-12 md:col-6 xl:col-6">
+                        <span class="p-float-label">
+                            <input type="text" pInputText id="ocupacaoPai" name="profissaoPai" #profissaoPai="ngModel" [(ngModel)]="filiacao.ocupacaoPai">
+                            <label for="ocupacaoPai">Profissao do Pai</label>
+                        </span>
+                    </div>
+
+                    <div class="col-12 md:col-6 xl:col-6">
+                        <span class="p-float-label">
+                            <input type="text" pInputText id="nomeMae" name="nomeMae" #nomeMae="ngModel" [(ngModel)]="filiacao.nomeMae">
+                            <label for="nomeMae">Nome do Mae</label>
+                        </span>
+                    </div>
+
+                    <div class="col-12 md:col-6 xl:col-6">
+                        <span class="p-float-label">
+                            <input type="text" pInputText id="ocupacaoMae" name="ocupacaoMae" #ocupacaoMae="ngModel" [(ngModel)]="filiacao.ocupacaoMae">
+                            <label for="ocupacaoMae">Profissao da Mae</label>
+                        </span>
+                    </div>
+
+                    <div class="col-12">
+                        <p-divider><b>Contactos de Emergencia</b></p-divider>
+                    </div>
+
+                    <div class="col-12 md:col-6 xl:col-6">
+                        <span class="p-float-label">
+                            <input type="text" pInputText id="emergenciaName" name="pessoaReferencia" #pessoaReferencia="ngModel" [(ngModel)]="pessoaEmergencia.nomePessoaReferencia">
+                            <label for="emergenciaName">Nome da Pessoa de Emergencia</label>
+                        </span>
+                    </div>
+
+                    <div class="col-12 md:col-6 xl:col-6">
+                        <span class="p-float-label">
+                            <p-inputMask mask="+258899999999" id="emergenciaPhone" name="telefoneEmergencia"  #telefoneEmergencia="ngModel" [(ngModel)]="pessoaEmergencia.telefoneEmergencia"></p-inputMask>
+                            <label for="emergenciaPhone">Numero de Telefone da Pessoa de Emergencia</label>
+                        </span>
+                    </div>
+
+                </div>
+
+                <div class="col-12">
+                    <button type="submit" pButton label="Salvar" class="p-button-success mr-2" icon="pi pi-check"></button>
+                    <button type="reset" pButton label="Limpar" class="p-button-warning" icon="pi pi-times"></button>
+                    <a routerLink="/pacientes" pButton class="mx-2">Valtar</a>
+                </div>
+            </form>
+
+        </div>
+
+        <app-gravidez-view *ngIf="isEdit"></app-gravidez-view>
+        <div class="my-2"></div>
+        <app-contactos *ngIf="isEdit"></app-contactos>
+        <div class="my-2"></div>
+        <app-enderecos *ngIf="isEdit"></app-enderecos>
+    </p-panel>
+</div>
